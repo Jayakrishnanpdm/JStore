@@ -34,6 +34,13 @@ a{
 p{
     color: #555;
 }
+
+.container_banner{
+    background: radial-gradient(#fff,#ffd6d6);
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
 .container{
     max-width: 1300px;
     margin: auto;
