@@ -31,9 +31,13 @@ db.sqlite3-journal
 # Ignore migrations
 */migrations/*
 
-# Ignore collected static files but not source static files
+# Ignore collected static files but track source static files
 /staticfiles/
 /media/
+
+# Track all static files and template files
+!static/**
+!templates/**
 
 # Django secret key and settings (if using environment variables)
 .env
