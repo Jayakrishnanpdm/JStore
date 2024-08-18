@@ -19,7 +19,7 @@
         <div class="row">
             {% for item in product_list %}
             <div class="col-4">
-                <a href="{% url 'product_detail' %}"><img src="{{ item.image.url }}"></a>
+                <a href="{% url 'product_detail' item.id %}"><img src="{{ item.image.url }}"></a>
                 <h4><strong>{{ item.title }}</strong></h4>
                 <div class="rating">
                     <i class="fa fa-star"></i>

@@ -66,6 +66,14 @@ p{
     line-height: 60px;
     margin: 25px 0;
 }
+
+.col-text {
+    flex-basis: 50%;
+    min-width: 300px;
+    margin-top: -5%;
+    margin-right: -6%;
+    min-height: 400px;
+}
 .btn{
     display: inline-block;
     background: #ff523b;
