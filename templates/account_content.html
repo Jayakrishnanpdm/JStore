@@ -16,17 +16,32 @@
                             <span onclick="register()">Register</span>
                             <hr id="Indicator">
                         </div>
-                        <form id="LoginForm">
-                            <input type="text" placeholder="Username">
-                            <input type="password" placeholder="Password">
+                        <form id="LoginForm" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% if login_error_message %}
+                            <p style="color: red;">{{login_error_message}}</p>
+                            {% endif %}
+                            <input type="hidden" name="form" value="login_form">
+                            <input type="text" placeholder="Username" name="username" required>
+                            <input type="password" placeholder="Password" name="password" required>
                             <button type="submit" class="btn">Login</button>
                             <a href="">Forget Password</a>
                         </form>
 
-                        <form id="RegForm">
-                            <input type="text" placeholder="Username">
-                            <input type="email" placeholder="Email">
-                            <input type="password" placeholder="Password">
+                        <form id="RegForm" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% if reg_error_message %}
+                            <p style="color: red;">{{reg_error_message}}</p>
+                            {% endif %}
+                            {% if sucess_message %}
+                            <p style="color: green;">{{sucess_message}}</p>
+                            {% endif %}
+                            <input type="hidden" name="form" value="reg_form">
+                            <input type="text" placeholder="Username" name="username" required minlength="3">
+                            <input type="email" placeholder="Email" name="password" required>
+                            <input type="text" placeholder="Address" name="address" required minlength="3">
+                            <input type="tel" placeholder="Phone" pattern="[0-9]{10}" name="phone" required>
+                            <input type="password" placeholder="Password" required name="password" minlength="3">
                             <button type="submit" class="btn">Register</button>
                         </form>
                     </div>
@@ -49,6 +64,9 @@
                 MenuItems.style.maxHeight = "0px"
             }
         }
+        window.onload = function() {
+            login(); // Ensure the login form is visible on page load
+        };
     </script>
 
     <!-- Toggle Form -->

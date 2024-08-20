@@ -5,7 +5,7 @@ from django.core.paginator import Paginator
 # Create your views here.
 def home(request):
     product_list_featured = Products.objects.filter(priority__range=(1, 4))
-    product_list_latest=Products.objects.order_by('-id')[:4]
+    product_list_latest=Products.objects.exclude(id=23).order_by('-id')[:4]
     return render(request,'home_layout.html',{'product_list_featured':product_list_featured,'product_list_latest':product_list_latest})
 
 def products(request):
