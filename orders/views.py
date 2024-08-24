@@ -31,4 +31,7 @@ def remove(request,id):
     product.delete()
     return redirect('order')
 
+def checkout(request):
+    return render(request,'checkout.html')
+
 

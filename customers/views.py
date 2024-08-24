@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login as authlogin,logout as authlogout
-from . models import Customer
+from . models import Customer,UserOpinion
 
 # Create your views here.
 def account(request):
@@ -38,4 +38,12 @@ def account(request):
 def logout(request):
     authlogout(request)
     return redirect('account')
+
+def contact_us(request):
+    if request.POST:
+        name=request.POST.get('Name')
+        email=request.POST.get('Email')
+        message=request.POST.get('Message')
+        user_opinion=UserOpinion.objects.create(name=name,email=email,message=message)
+        return redirect('home')
     

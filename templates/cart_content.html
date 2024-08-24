@@ -25,7 +25,7 @@
                         </div>
                     </div>
                 </td>
-                <td><input type="number" value="{{item.quantity}}" min="1" ></td>
+                <td><input type="number" value="{{item.quantity}}" min="1" readonly ></td>
                 <td>RS {{item|subtotal}}</td>
             </tr>
             {% endfor %}
@@ -38,7 +38,7 @@
                 </tr>
 
                 <tr>
-                    <td colspan="2"><button type="submit" class="btn">Checkout</button></td>
+                    <td colspan="2"><a href="{% url 'checkout' %}"><button class="btn">Checkout</button></a></td>
                 </tr>
             </table>
         </div>

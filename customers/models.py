@@ -8,3 +8,9 @@ class Customer(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE,related_name='customer_profile')
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
+
+class UserOpinion(models.Model):
+    name=models.CharField(max_length=25)
+    email=models.CharField(max_length=50)
+    message=models.TextField()
+
