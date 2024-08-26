@@ -38,7 +38,11 @@
                 </tr>
 
                 <tr>
-                    <td colspan="2"><a href="{% url 'checkout' %}"><button class="btn">Checkout</button></a></td>
+                    <form method="post" enctype="multipart/form-data" action="{% url 'payment' %}">
+                        {% csrf_token %}
+                     <input type="hidden" value="{{ordered_items|totalsum}}"   name="amount">
+                    <td colspan="2"><button class="btn" type="submit">Checkout</button></td>
+                    </form>
                 </tr>
             </table>
         </div>

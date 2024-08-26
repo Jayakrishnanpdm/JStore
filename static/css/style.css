@@ -253,6 +253,19 @@ input[type="submit"].fcf-btn-block, input[type="reset"].fcf-btn-block, input[typ
     border-radius: 30px;
     transition: background 0.5s;
 }
+.btn-delivary{
+    display: inline-block;
+    background: #008cdd;
+    color: white;
+    font-family:Arial, Helvetica, sans-serif;
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+    transition: background 0.5s;
+}
+.btn-delivary:hover{
+    background: #563434;
+}
 .btn:hover{
     background: #563434;
 }

@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'customers',
     'orders',
-    'products'
+    'products',
+    'payments',
 ]
 
 MIDDLEWARE = [
@@ -137,3 +138,10 @@ MEDIAFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# stripe_paymentGateway
+
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51PrMOk022pYe9ecpdIJZrF02yzDqrnDOeN2P9sl332gz7E8ROWanzXMLC8bxCsdfr0Q9RYMA4HlW9DrJ7Ddb8Efd009DsHMF5m'
+STRIPE_SECRET_KEY = 'sk_test_51PrMOk022pYe9ecpXH0ddfGPxXmhJfIqc1JcDUWkaO7ERV4w4dmAAw1PNaQ5vB6VRclqhCr49lnTHkXdA9lN0DVk00YP0oVX91'
+
+
