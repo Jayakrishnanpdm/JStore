@@ -35,6 +35,7 @@ def remove(request,id):
 def order_confirm(request):
     if request.POST:
         payment_status=request.POST.get('payment_status')
+        payment_status="Cash On Delivery"
     else:
         payment_status="Card Payment"   
     user=request.user.customer_profile
