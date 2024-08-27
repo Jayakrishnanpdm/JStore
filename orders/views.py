@@ -31,7 +31,16 @@ def remove(request,id):
     product.delete()
     return redirect('order')
 
-def checkout(request):
+def order_confirm(request):
+    user=request.user.customer_profile
+    order=Order.objects.get(owner=user,order_status=Order.CART_STAGE)
+    order.order_status=Order.ORDER_CONFIRMED
+    order.save()
     return render(request,'checkout.html')
 
+def previous_orders(request):
+    user = request.user.customer_profile
+    order_obj = Order.objects.filter(owner=user).exclude(order_status=Order.CART_STAGE)
+    previous_ordered_items = Ordered_item.objects.filter(order__in=order_obj)
+    return render(request, 'previous_orders.html', {'previous_ordered_items': previous_ordered_items})
 

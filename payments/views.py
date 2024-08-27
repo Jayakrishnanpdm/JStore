@@ -45,7 +45,7 @@ def payment(request):
                     description='Order payment',
                     source=token,
                 )
-                return redirect('payment_success')
+                return redirect('order_confirm')
             except stripe.error.CardError as e:
                 return render(request, 'payment.html', {
                     'error': str(e),
@@ -57,5 +57,4 @@ def payment(request):
         'stripe_publishable_key': settings.STRIPE_PUBLISHABLE_KEY
     })
 
-def success(request):
-    return render(request, 'checkout.html')
+

@@ -26,8 +26,8 @@ class Order(models.Model):
 
 
 class Ordered_item(models.Model):
-    product=models.ForeignKey(Products,on_delete=models.CASCADE,related_name='orders')
+    product=models.ForeignKey(Products,on_delete=models.CASCADE,related_name='cart')
     quantity=models.IntegerField(default=1)
     size=models.CharField(max_length=10)
-    order=models.ForeignKey(Order,on_delete=models.CASCADE,related_name='add_to_cart')
+    order=models.ForeignKey(Order,on_delete=models.CASCADE,related_name='orders')
 

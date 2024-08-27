@@ -20,6 +20,5 @@ from . import views
 
 urlpatterns = [
     path('payment/', views.payment,name='payment'),
-    path('payment_success/', views.success,name='payment_success'),
     
 ]

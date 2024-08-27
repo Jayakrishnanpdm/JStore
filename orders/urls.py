@@ -21,5 +21,6 @@ from . import views
 urlpatterns = [
     path('order/', views.order,name='order'),
     path('order/<id>', views.remove,name='remove'),
-     path('checkout/', views.checkout,name='checkout'),
+    path('order_confirm/', views.order_confirm,name='order_confirm'),
+    path('previous_orders/', views.previous_orders,name='previous_orders'),
 ]

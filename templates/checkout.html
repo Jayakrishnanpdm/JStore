@@ -1,4 +1,7 @@
 {% extends 'base_layout.html' %}
 {% block content %}
-<h1 style="background-color: green; color: white; font-size: x-large; font-family: Arial, Helvetica, sans-serif; text-align: center; margin-top: 25%;">Your Order Is Confirmed.</h1>
+<div class="section" style="text-align: center; margin-top: 15%;">
+<h1 style="background-color: green; color: white; font-size: x-large; font-family: Arial, Helvetica, sans-serif;">Your Order Is Confirmed.</h1>
+<a href="{% url 'previous_orders' %}"><button class="btn">Visit Previous Orders</button></a>
+</div>
 {% endblock %}
