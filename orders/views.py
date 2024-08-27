@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from products . models import Products
 from. models import Order,Ordered_item
+from payments.models import PaymentStatus
 # Create your views here.
 
 @login_required(login_url='account')
@@ -32,10 +33,15 @@ def remove(request,id):
     return redirect('order')
 
 def order_confirm(request):
+    if request.POST:
+        payment_status=request.POST.get('payment_status')
+    else:
+        payment_status="Card Payment"   
     user=request.user.customer_profile
     order=Order.objects.get(owner=user,order_status=Order.CART_STAGE)
     order.order_status=Order.ORDER_CONFIRMED
     order.save()
+    status=PaymentStatus.objects.create(status=payment_status,order=order)
     return render(request,'checkout.html')
 
 def previous_orders(request):

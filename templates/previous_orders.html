@@ -1,5 +1,6 @@
 {% extends 'base_layout.html' %}
 {% block content %}
+{% load price %}
 <table>
     <thead>
         <th>Product</th>
@@ -15,7 +16,7 @@
         <td>{{items.product.title}}</td>
         <td>{{items.quantity}}</td>
         <td>{{items.size}}</td>
-        <td>{{items.product.price}}</td>
+        <td>{{items.product.price |price:items.quantity}}</td>
         <td><img src="{{items.product.image.url}}" width="100%" class="small-img"></td>
         <td>{{items.order.updated_at}}</td>
         </tr>

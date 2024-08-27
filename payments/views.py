@@ -1,4 +1,5 @@
 import stripe
+import uuid
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.core.exceptions import ValidationError
