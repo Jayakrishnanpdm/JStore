@@ -34,15 +34,15 @@ def remove(request,id):
 
 def order_confirm(request):
     if request.POST:
-        payment_status=request.POST.get('payment_status')
-        payment_status="Cash On Delivery"
+        payment_mode=request.POST.get('payment_mode')
+        payment_mode="Cash On Delivery"
     else:
-        payment_status="Card Payment"   
+        payment_mode="Card Payment"   
     user=request.user.customer_profile
     order=Order.objects.get(owner=user,order_status=Order.CART_STAGE)
     order.order_status=Order.ORDER_CONFIRMED
     order.save()
-    status=PaymentStatus.objects.create(status=payment_status,order=order)
+    mode=PaymentStatus.objects.create(mode=payment_mode,order=order)
     return render(request,'checkout.html')
 
 def previous_orders(request):

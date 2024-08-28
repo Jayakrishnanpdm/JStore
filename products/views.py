@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from . models import Products
+from django.shortcuts import render,redirect
+from . models import Products,ProductReview
+from customers.models import Customer
 from django.core.paginator import Paginator
 
 # Create your views here.
@@ -22,6 +23,19 @@ def product_detail(request,id):
     product=Products.objects.get(id=id)
     title=product.title
     related_products = Products.objects.filter(title=title).exclude(id=id)
-    return render(request,'product_detail.html',{"product":product,"related_products":related_products})
+    context={"product":product,"related_products":related_products}
+    return render(request,'product_detail.html',context)
 
-
+def product_review(request):
+    if request.POST:
+        if ("product_id") in request.POST:
+           product_id=request.POST.get('product_id')
+           return render(request,'product_review.html',{"product_id":product_id})    
+        elif ("id") in request.POST:
+            id=request.POST.get('id')
+            product=Products.objects.get(id=id)
+            content=request.POST.get('content')
+            user=request.user.customer_profile
+            obj=ProductReview.objects.create(content=content,user=user,product=product)
+            return redirect('previous_orders')
+        return(request,'previous_orders.html')

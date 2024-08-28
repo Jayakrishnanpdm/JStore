@@ -19,7 +19,7 @@
     <h2 style="margin-top: 2%;">OR</h2>
     <form method="post" action="{% url 'order_confirm' %}">
         {% csrf_token %}
-        <input type="hidden" value="Cash On Delivary" name="payment_status">
+        <input type="hidden" value="Cash On Delivary" name="payment_mode">
         <button class="btn-delivary" type="submit">Cash On Delivery</button>
     </form>
 </div>

@@ -1,0 +1,13 @@
+{% include 'head.html' %}
+{% include 'header.html' %}
+<div class="section" style="text-align: center; margin-top: 15%;">
+<h1>Write a Review</h1>
+<form method="post" action="{% url 'product_review' %}">
+    {% csrf_token %}
+<input type="hidden" value="{{product_id}}" name="id">
+<input type="text" name="content" placeholder="How is the product" minlength="3" maxlength="30" class="fcf-form-control">
+<br>
+<button class="btn" type="submit">Finish</button>
+</form>
+</div>
+{% include 'footer.html' %}

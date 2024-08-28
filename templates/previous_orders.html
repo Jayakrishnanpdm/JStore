@@ -1,15 +1,17 @@
 {% extends 'base_layout.html' %}
 {% block content %}
 {% load price %}
-<table>
+{% if previous_ordered_items %}
+<table style="margin-top: 4%;">
     <thead>
         <th>Product</th>
         <th>Quantity</th>
         <th>Size</th>
         <th>Price</th>
         <th>Image</th>
-        <th>Payment Status</th>
+        <th>Payment Mode</th>
         <th>Purchased Date</th>
+        <th>Drop A Review</th>
     </thead>
     <tbody>
     {% for items in previous_ordered_items %}
@@ -19,10 +21,21 @@
         <td>{{items.size}}</td>
         <td>{{items.product.price |price:items.quantity}}</td>
         <td><img src="{{items.product.image.url}}" width="100%" class="small-img"></td>
-        <td>{{items.order.payment.status}}</td>
+        <td>{{items.order.payment.mode}}</td>
         <td>{{items.order.updated_at}}</td>
+        <form method="post" action="{% url 'product_review' %}">
+            {% csrf_token %}
+        <input type="hidden" value="{{items.product.id}}"  name="product_id">
+        <td><button class="btn" type="submit">Review</button></td>
+        </form>
         </tr>
     {% endfor %}
     </tbody>    
 </table>
+{% else %}
+<div class="section" style="margin-top: 15%; text-align: center;" >
+<h1 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">No Previous Orders Exist</h1>
+<a href="{% url 'products' %}"><button class="btn">Buy</button></a>
+{% endif %}
+</div>
 {% endblock %}
