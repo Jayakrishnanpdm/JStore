@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--^w&&*-ew6lrx4*r3k_(bm^7dcpokdj6qt_8z53-vqyu^c^jf%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS =['jaypdm.pythonanywhere.com']
 
@@ -128,13 +128,13 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",  # Assuming you have a static directory at the base of your project
 ]
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 
 MEDIAFILES_DIRS = [
     BASE_DIR / "media",  # Assuming you have a media directory at the base of your project
 ]
-
+MEDIA_ROOT = BASE_DIR / 'media'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
